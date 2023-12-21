@@ -1,0 +1,32 @@
+<app-navbar [link]="link" [navbarTitle]="navbarTitle"></app-navbar>
+<form 
+  [ngClass]="themeService.isDark ? 'dark-theme' : ''"
+  method="post" 
+  class="absolute flex flex-col items-center justify-center w-full gap-10 h-screen"
+>
+  <input 
+    placeholder="title..." 
+    class="outline-none border border-gray-600 rounded-2xl text-3xl w-1/4 text-center p-2 shadow-black shadow-2xl" 
+    type="text"
+    name="title"
+    [(ngModel)]="title"
+  >
+  <textarea 
+    placeholder="description..." 
+    class="outline-none border border-gray-600 rounded-2xl text-3xl w-1/4 text-center p-2 shadow-black shadow-2xl" 
+    cols="30" rows="10"
+    name="description"
+    [(ngModel)]="description"
+  ></textarea>
+  <div class="w-1/4 flex justify-center gap-8">
+    <label class="input-file border-dashed rounded-2xl border-2 border-gray-500 shadow-black shadow-2xl">
+      <input type="file" name="img" [(ngModel)]="img">		
+      <span class="rounded-2xl">Add foto</span>
+    </label>
+    <button 
+      (click)="addArticle()"
+      style="font-size: 25px; padding: 25px 40px; background-color: blue;"
+      mat-raised-button color="primary"
+    >Add Article</button>
+  </div>
+</form>

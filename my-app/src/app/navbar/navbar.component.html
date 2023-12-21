@@ -1,0 +1,17 @@
+<div 
+  [ngClass]="themeService.isDark ? 'bg-blue-950 text-white' : 'bg-blue-600'" 
+  class="absolute w-full h-24 flex justify-around items-center gap-20 z-10"
+>
+  <h1 
+    [ngClass]="themeService.isDark ? ' text-white' : ''" 
+    class="text-4xl"
+  >News Gazeta</h1>
+  <div class="flex gap-10">
+    <a (click)="logout()" routerLink="/" class="text-4xl">Sign out</a>
+    <a [routerLink]="link" class="text-4xl">{{ navbarTitle }}</a>
+    <span 
+      (click)="setTheme()" 
+      class="material-symbols-outlined text-4xl cursor-pointer hover:text-blue-300"
+    >{{ themeService.isDark ? 'light_mode' : 'dark_mode' }}</span>
+  </div>
+</div>

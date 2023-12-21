@@ -1,0 +1,32 @@
+<app-navbar [link]="link" [navbarTitle]="navbarTitle"></app-navbar>
+<div class="w-full h-screen" [ngClass]="themeService.isDark ? 'dark-theme' : ''">
+  <div class="relative flex flex-col items-center w-2/3 mx-auto top-32">
+    <div class="flex my-16">
+      <img [src]="post.img" alt="">
+      <h1 [ngClass]="themeService.isDark ? 'text-white' : ''" class="text-6xl">{{ post.title }}</h1>
+    </div>
+    <h1 [ngClass]="themeService.isDark ? 'text-white' : ''" class="text-4xl">{{ post.description }}</h1>
+  </div>
+</div>
+<form class="flex flex-col justify-around items-center w-full h-52 bg-sky-500" method="post">
+  <input 
+    [(ngModel)]="commentText" name="commentText"
+    class="text-3xl h-12 w-1/4 px-6 rounded-2xl outline-none" 
+    type="text" placeholder="Comment..."
+  >
+  <button 
+    (click)="addComment()"
+    class="text-3xl h-12 w-1/6 rounded-2xl" 
+    nz-button nzType="primary" nzDanger
+  >Add comment</button>
+</form>
+<div class="text-3xl w-full min-h-fit bg-sky-500">
+  <h1 class="ml-16">Comments:</h1>
+  <div *ngFor="let comment of comments" class="flex bg-slate-800 w-1/5 min-w-fit h-24 rounded-xl my-3 items-center justify-center gap-3 ml-16">
+    <h1 class="text-white">{{ comment.author }}:</h1>
+    <h1 class="text-white">{{ comment.text }}</h1>
+  </div>
+  <div *ngIf="comments.length === 0" class="ml-16 text-white">
+    <h1 class="text-4xl my-3 italic">No comments yet...</h1>
+  </div>
+</div>
